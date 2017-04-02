@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Media.io</string>
+    <string name="facebook_app_id">242918692846456</string>
+    <string name="title_activity_media_iomain">MediaIOMain</string>
+    <string name="datos">com.example.mediaio.mediaio</string>
+    <string name="textoLoginEmail">Ingrese su email para comenzar</string>
+    <string name="botonEnviarEmailLogin">></string>
+
+    <string name="registroTextoNombre">Nombre:</string>
+    <string name="registroTextoApellido">Apellido:</string>
+    <string name="registroTextoEmail">Email</string>
+    <string name="registroTextoFechaNacimiento">Fecha de Nacimiento:</string>
+    <string name="registroTextoContrasena">Contraseña:</string>
+    <string name="registroTextoBotonRegistrar">Registrarse</string>
+</resources>
