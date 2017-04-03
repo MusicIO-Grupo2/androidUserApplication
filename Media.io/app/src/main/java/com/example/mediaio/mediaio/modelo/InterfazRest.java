@@ -88,9 +88,7 @@ abstract public class InterfazRest {
                 try
                 {
                     //Envio y espero la peticion.
-                    Log.e("Mensaje","Ya voy a mandar la peticion");
                     HttpResponse resp = httpClient.execute(get);
-                    Log.e("Mensaje","Ya llego la peticion");
                     String respStr = EntityUtils.toString(resp.getEntity());
                     codigoServidor = resp.getStatusLine().getStatusCode();
 

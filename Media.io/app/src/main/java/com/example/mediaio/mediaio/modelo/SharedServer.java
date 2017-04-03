@@ -15,7 +15,6 @@ public class SharedServer extends InterfazRest{
 
     public void existeUsuarioEmail(String email, JSONCallback callback)
     {
-        Log.e("Mensaje","Estoy en el sharedServer!");
         enviarGET(URLAPIREST+"users?email="+email,callback);
     }
 

@@ -34,7 +34,8 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".MediaIOMain" />
-        <activity android:name=".MediaIORegistrar"></activity>
+        <activity android:name=".MediaIORegistrar" />
+        <activity android:name=".LoginSecondActivity"></activity>
     </application>
 
 </manifest>

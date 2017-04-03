@@ -14,6 +14,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+    final static long MILISEGUNDOSSPLASH = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                if( sharedPref.getBoolean("logged",false))
+                if(sharedPref.getString("token","0") != "0")
                     irAMain();
                 else
                     irALogin();
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         };
         Timer timer = new Timer();
 
-        timer.schedule(tareaTimer, 0);
+        timer.schedule(tareaTimer, MILISEGUNDOSSPLASH);
     }
     void irAMain()
     {

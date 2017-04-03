@@ -41,6 +41,7 @@ public class LoginFirstActivity extends AppCompatActivity {
     TextView textView;
     CallbackManager callbackManager;
     SharedServer sharedServer;
+    EditText email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class LoginFirstActivity extends AppCompatActivity {
         //Si esta logeado va directo a la pagina principal
 
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
-        if(sharedPref.getBoolean("logged",false))
+        if(sharedPref.getString("token","0") != "0")
             irAMain();
 
         //Inicializa el sdk de facebook.
@@ -61,18 +62,20 @@ public class LoginFirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_first);
         ponerFondo();
 
+        email = (EditText) findViewById(R.id.email);
+        email.setText(sharedPref.getString("email",""));
+
+
         //Handle del boton.
 
         Button boton = (Button) findViewById(R.id.enviarEmail);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText email = (EditText) findViewById(R.id.email);
                 SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
 
-                sharedPref.edit().putString("email", email.getText().toString());
+                sharedPref.edit().putString("email", email.getText().toString()).commit();
 
-                Log.e("Mensaje","Estoy antes de verificar");
                 sharedServer.existeUsuarioEmail(email.getText().toString(), new VerificarEmail());
             }
         });
@@ -104,21 +107,14 @@ public class LoginFirstActivity extends AppCompatActivity {
                                     String email = object.getString("email");
                                     String nombre = object.getString("first_name");
                                     String apellido = object.getString("last_name");
-                                    String fechaNacimiento = object.getString("age_range");
 
-                                    sharedPref.edit().putString("email", email);
-                                    sharedPref.edit().putString("nombre", nombre);
-                                    sharedPref.edit().putString("apellido", apellido);
-                                    sharedPref.edit().putString("fechaNacimiento", fechaNacimiento);
-
-
-                                    sharedPref.edit().commit();
+                                    sharedPref.edit().putString("email", email).commit();
+                                    sharedPref.edit().putString("nombre", nombre).commit();
+                                    sharedPref.edit().putString("apellido", apellido).commit();
 
                                     sharedServer.existeUsuarioEmail(email, new VerificarEmail());
 
                                 } catch (org.json.JSONException e) {
-                                    Log.e("Mensaje","Lo pongo en false");
-                                    sharedPref.edit().putBoolean("logged", false).commit();
                                 }
                             }
                         });
@@ -152,6 +148,12 @@ public class LoginFirstActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    void irALoginSecond()
+    {
+        Intent intent = new Intent(this, LoginSecondActivity.class);
+        startActivity(intent);
+    }
+
     void irARegistrar()
     {
         Intent intent = new Intent(this, MediaIORegistrar.class);
@@ -162,26 +164,25 @@ public class LoginFirstActivity extends AppCompatActivity {
     {
         public void ejecutar(JSONObject json, long codigoServidor)
         {
-            Log.e("Mensaje", "Estoy al principio de ejecutar");
-            if(json.length() == 4) {
+            if(codigoServidor == 200) {
 
                 try {
                     SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
-                    sharedPref.edit().putString("email", json.getString("nombre"));
-                    sharedPref.edit().putString("nombre", json.getString("apellido"));
-                    sharedPref.edit().putString("apellido", json.getString("email"));
-                    sharedPref.edit().putString("fechaNacimiento", json.getString("fechaNacimiento"));
+                    sharedPref.edit().putString("email", json.getString("Email"));
+                    sharedPref.edit().putString("nombre", json.getString("Name"));
+                    sharedPref.edit().putString("apellido", json.getString("LastName"));
+                    sharedPref.edit().putString("fechaNacimiento", json.getString("FechaNacimiento"));
+
+                    sharedPref.edit().commit();
                 }
                 catch(JSONException e)
                 {
 
                 }
 
-                Log.e("Mensaje","Voy a main");
-                irAMain();
+                irALoginSecond();
             }
             else {
-                Log.e("Mensaje","Voy a registrar");
                 irARegistrar();
             }
 

@@ -12,4 +12,8 @@
     <string name="registroTextoFechaNacimiento">Fecha de Nacimiento:</string>
     <string name="registroTextoContrasena">Contraseña:</string>
     <string name="registroTextoBotonRegistrar">Registrarse</string>
+    <string name="botonLogin">Ingresar</string>
+    <string name="textoLoginContrasena">Ingrese su contraseña para finalizar el login.</string>
+    <string name="loginContrasenaInvalida"></string>
+    <string name="botonLogout">Logout</string>
 </resources>

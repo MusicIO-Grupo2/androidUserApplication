@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.example.mediaio.mediaio.modelo.JSONCallback;
 import com.example.mediaio.mediaio.modelo.SharedServer;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MediaIORegistrar extends AppCompatActivity {
@@ -38,12 +37,12 @@ public class MediaIORegistrar extends AppCompatActivity {
         email.setText(sharedPref.getString("email",""));
         fechaNacimiento.setText(sharedPref.getString("fechaNacimiento",""));
 
-       class DarAlta extends JSONCallback
+       class DarAltaCallback extends JSONCallback
         {
 
             @Override
             public void ejecutar(JSONObject respuesta, long codigoServidor) {
-                if(codigoServidor == 200)
+                    if(codigoServidor == 200)
                 {
                     sharedPref.edit().putString("nombre", nombre.getText().toString());
                     sharedPref.edit().putString("apellido", apellido.getText().toString());
@@ -52,7 +51,7 @@ public class MediaIORegistrar extends AppCompatActivity {
                     sharedPref.edit().putString("contrasena", contrasena.getText().toString());
                     sharedPref.edit().commit();
 
-                    irAMain();
+                    irALoginSecond();
                 }
                 else
                     error.setText("Hubo un error. Revise los datos ingresados y vuelva a intentarlo.");
@@ -68,15 +67,15 @@ public class MediaIORegistrar extends AppCompatActivity {
                 registrarse.setEnabled(false);
                 SharedServer sharedServer = new SharedServer();
 
-                sharedServer.darAltaUsuario(nombre.getText().toString(), apellido.getText().toString(), email.getText().toString(), fechaNacimiento.getText().toString(), contrasena.getText().toString(), new DarAlta());
+                sharedServer.darAltaUsuario(nombre.getText().toString(), apellido.getText().toString(), email.getText().toString(), fechaNacimiento.getText().toString(), contrasena.getText().toString(), new DarAltaCallback());
 
             }
         });
     }
 
-    void irAMain()
+    void irALoginSecond()
     {
-        Intent intent = new Intent(this, MediaIOMain.class);
+        Intent intent = new Intent(this, LoginSecondActivity.class);
         startActivity(intent);
     }
 }
