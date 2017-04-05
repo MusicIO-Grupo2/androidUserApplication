@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <attr name="requerido" format="boolean"/>
+        <attr name="longitud" format="integer"/>
+
+    <declare-styleable name="EditTextEmail">
+        <attr name="requerido" />
+        <attr name="longitud" />
+    </declare-styleable>
+
+    <declare-styleable name="EditTextPassword">
+        <attr name="longitud" />
+    </declare-styleable>
+
+    <declare-styleable name="EditTextFecha">
+        <attr name="requerido" />
+    </declare-styleable>
+
+    <declare-styleable name="EditTextComun">
+        <attr name="requerido" />
+        <attr name="longitud" />
+    </declare-styleable>
+
+
+</resources>

@@ -11,11 +11,11 @@ import org.json.JSONObject;
 
 public class SharedServer extends InterfazRest{
 
-    private static final String URLAPIREST = "http://demo9499910.mockable.io/";
+    private static final String URLAPIREST = "https://musiciogrupo2.herokuapp.com/";
 
     public void existeUsuarioEmail(String email, JSONCallback callback)
     {
-        enviarGET(URLAPIREST+"users?email="+email,callback);
+        enviarGET(URLAPIREST+"registrado?email="+email,callback);
     }
 
     public void obtenerToken(String email, String contrasena, JSONCallback callback)
@@ -23,15 +23,15 @@ public class SharedServer extends InterfazRest{
         JSONObject json = new JSONObject();
 
         try {
-            json.put("email", email);
-            json.put("contrasena",contrasena);
+            json.put("Email", email);
+            json.put("Password",contrasena);
         }
         catch(JSONException e)
         {
 
         }
 
-        enviarPOST(URLAPIREST+"tokens",json,callback);
+        enviarPOST(URLAPIREST+"auth/login",json,callback);
     }
 
     public void darAltaUsuario(String nombre, String apellido, String email, String fechaNacimiento, String contrasena, JSONCallback callback)

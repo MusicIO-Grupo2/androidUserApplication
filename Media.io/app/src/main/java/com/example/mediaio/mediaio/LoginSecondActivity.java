@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.mediaio.mediaio.Excepciones.InputErronea;
+import com.example.mediaio.mediaio.Formularios.EditTextPassword;
 import com.example.mediaio.mediaio.modelo.JSONCallback;
 import com.example.mediaio.mediaio.modelo.SharedServer;
 
@@ -19,7 +22,7 @@ import org.json.JSONObject;
 
 public class LoginSecondActivity extends AppCompatActivity {
 
-    EditText contrasena;
+    EditTextPassword contrasena;
     TextView error;
     Button login;
     SharedServer sharedServer;
@@ -34,14 +37,22 @@ public class LoginSecondActivity extends AppCompatActivity {
         sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
         login = (Button) findViewById(R.id.login);
         sharedServer = new SharedServer();
-        contrasena = (EditText) findViewById(R.id.loginContrasena);
+        contrasena = (EditTextPassword) findViewById(R.id.loginContrasena);
         error = (TextView) findViewById(R.id.loginError);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login.setEnabled(false);
-                sharedServer.obtenerToken(sharedPref.getString("email",""),contrasena.getText().toString(),new IngresarUsuarioCallback());
+                String texto;
+                try
+                {
+                    texto = contrasena.obtenerTexto();
+                    login.setEnabled(false);
+                    sharedServer.obtenerToken(sharedPref.getString("email",""),texto,new IngresarUsuarioCallback());
+                }
+                catch (InputErronea e)
+                {
+                }
             }
         });
     }
@@ -53,16 +64,20 @@ public class LoginSecondActivity extends AppCompatActivity {
             if(codigoServidor==200)
             {
                 try {
-                    sharedPref.edit().putString("nombre",respuesta.getString("Name")).commit();
-                    sharedPref.edit().putString("apellido",respuesta.getString("LastName")).commit();
-                    sharedPref.edit().putString("email",respuesta.getString("Email")).commit();
-                    sharedPref.edit().putString("fechaNacimiento",respuesta.getString("FechaNacimiento")).commit();
-                    sharedPref.edit().putString("token", respuesta.getString("Token")).commit();
-                    sharedPref.edit().putString("id",respuesta.getString("UserID")).commit();
+                    JSONObject user = respuesta.getJSONObject("user");
+
+                    //Al ser Server Mandatory se guardan los datos que envio el Server como validos.
+                    sharedPref.edit().putString("nombre",user.getString("Name")).commit();
+                    sharedPref.edit().putString("apellido",user.getString("LastName")).commit();
+                    sharedPref.edit().putString("email",user.getString("Email")).commit();
+                    sharedPref.edit().putString("fechaNacimiento",user.getString("FechaNacimiento")).commit();
+                    sharedPref.edit().putString("token", respuesta.getString("token")).commit();
+                    sharedPref.edit().putString("id",user.getString("UserID")).commit();
                 }
                 catch (JSONException e)
                 {
-
+                    //No tiene sentido hacer nada mas si el Server responde un JSON corrupto.
+                    return;
                 }
 
                 irAMain();
@@ -88,6 +103,7 @@ public class LoginSecondActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //El fondo se mantiene entre las diferentes pantallas.
     void ponerFondo()
     {
         LinearLayout fondo = (LinearLayout) findViewById(R.id.ventanaLoginFirst);

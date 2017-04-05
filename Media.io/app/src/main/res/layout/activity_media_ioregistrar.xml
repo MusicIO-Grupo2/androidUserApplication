@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ventana"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_vertical">
 
     <TextView
         android:text="@string/registroTextoNombre"
@@ -13,10 +15,11 @@
         android:layout_height="wrap_content"
         />
 
-    <EditText
+    <com.example.mediaio.mediaio.Formularios.EditTextComun
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registroTextoNombre"/>
+        android:id="@+id/registroTextoNombre"
+        custom:requerido="true"/>
 
     <TextView
         android:text="@string/registroTextoApellido"
@@ -24,10 +27,11 @@
         android:layout_height="wrap_content"
         />
 
-    <EditText
+    <com.example.mediaio.mediaio.Formularios.EditTextComun
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registroTextoApellido"/>
+        android:id="@+id/registroTextoApellido"
+        custom:requerido="true"/>
 
     <TextView
         android:text="@string/registroTextoEmail"
@@ -35,10 +39,11 @@
         android:layout_height="wrap_content"
         />
 
-    <EditText
+    <com.example.mediaio.mediaio.Formularios.EditTextEmail
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registroTextoEmail"/>
+        android:id="@+id/registroTextoEmail"
+        custom:requerido="true"/>
 
     <TextView
         android:text="@string/registroTextoFechaNacimiento"
@@ -46,7 +51,7 @@
         android:layout_height="wrap_content"
         />
 
-    <EditText
+    <com.example.mediaio.mediaio.Formularios.EditTextFecha
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/registroTextoFechaNacimiento"/>
@@ -57,10 +62,10 @@
         android:layout_height="wrap_content"
         />
 
-    <EditText
+    <com.example.mediaio.mediaio.Formularios.EditTextPassword
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registroTextoContrasena"/>
+        android:id="@+id/registroTextoContrasena" />
 
     <Button
         android:layout_width="wrap_content"
