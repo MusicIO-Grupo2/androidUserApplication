@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.mediaio.mediaio.Excepciones.InputErronea;
+import com.example.mediaio.mediaio.Formularios.EditTextComun;
+import com.example.mediaio.mediaio.Formularios.EditTextEmail;
+import com.example.mediaio.mediaio.Formularios.EditTextFecha;
+import com.example.mediaio.mediaio.Formularios.EditTextPassword;
 import com.example.mediaio.mediaio.modelo.JSONCallback;
 import com.example.mediaio.mediaio.modelo.SharedServer;
 
@@ -30,13 +36,15 @@ public class MediaIORegistrar extends AppCompatActivity {
 
         final SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
 
-        final EditText nombre = (EditText) findViewById(R.id.registroTextoNombre);
-        final EditText apellido = (EditText) findViewById(R.id.registroTextoApellido);
-        final EditText email = (EditText) findViewById(R.id.registroTextoEmail);
-        final EditText fechaNacimiento = (EditText) findViewById(R.id.registroTextoFechaNacimiento);
-        final EditText contrasena = (EditText) findViewById(R.id.registroTextoContrasena);
+        final EditTextComun nombre = (EditTextComun) findViewById(R.id.registroTextoNombre);
+        final EditTextComun apellido = (EditTextComun) findViewById(R.id.registroTextoApellido);
+        final EditTextEmail email = (EditTextEmail) findViewById(R.id.registroTextoEmail);
+        final EditTextFecha fechaNacimiento = (EditTextFecha) findViewById(R.id.registroTextoFechaNacimiento);
+        final EditTextPassword contrasena = (EditTextPassword) findViewById(R.id.registroTextoContrasena);
         final TextView error = (TextView) findViewById(R.id.registroTextoError);
         final Button registrarse = (Button) findViewById(R.id.registroBotonRegistrar);
+
+        Log.e("Mensaje","5");
 
         //Si se esta logueando con Facebook se tendran estos datos y se llenan los campos.
         nombre.setText(sharedPref.getString("nombre",""));
@@ -52,21 +60,27 @@ public class MediaIORegistrar extends AppCompatActivity {
             public void ejecutar(JSONObject respuesta, long codigoServidor) {
                 if(codigoServidor == 200)
                 {
-                    //Se guardan por ultima vez los datos ya que esto es Server Mandatory y tiene
-                    //la ultima palabra de aprobacion.
-                    sharedPref.edit().putString("nombre", nombre.getText().toString());
-                    sharedPref.edit().putString("apellido", apellido.getText().toString());
-                    sharedPref.edit().putString("email", email.getText().toString());
-                    sharedPref.edit().putString("fechaNacimiento", fechaNacimiento.getText().toString());
-                    sharedPref.edit().putString("contrasena", contrasena.getText().toString());
-                    sharedPref.edit().commit();
+                    try {
+                        //Se guardan por ultima vez los datos ya que esto es Server Mandatory y tiene
+                        //la ultima palabra de aprobacion.
+                        sharedPref.edit().putString("nombre", nombre.obtenerTexto());
+                        sharedPref.edit().putString("apellido", apellido.obtenerTexto());
+                        sharedPref.edit().putString("email", email.obtenerTexto());
+                        sharedPref.edit().putString("fechaNacimiento", fechaNacimiento.obtenerTexto());
+                        sharedPref.edit().putString("contrasena", contrasena.obtenerTexto());
+                        sharedPref.edit().commit();
 
-                    irALoginSecond();
+                        irALoginSecond();
+                    }
+                    catch(InputErronea e)
+                    {
+
+                    }
                 }
                 else
                     error.setText("Hubo un error. Revise los datos ingresados y vuelva a intentarlo.");
 
-                //Se reativa el boton para poder reenviar los datos.
+                //Se reactiva el boton para poder reenviar los datos.
                 registrarse.setEnabled(true);
 
             }
@@ -76,10 +90,15 @@ public class MediaIORegistrar extends AppCompatActivity {
         registrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Desactiva el boton para no admitir repeticiones.
-                registrarse.setEnabled(false);
-                sharedServer.darAltaUsuario(nombre.getText().toString(), apellido.getText().toString(), email.getText().toString(), fechaNacimiento.getText().toString(), contrasena.getText().toString(), new DarAltaCallback());
+                try {
+                    //Desactiva el boton para no admitir repeticiones.
+                    sharedServer.darAltaUsuario(nombre.obtenerTexto(), apellido.obtenerTexto(), email.obtenerTexto(), fechaNacimiento.obtenerTexto(), contrasena.obtenerTexto(), new DarAltaCallback());
+                    registrarse.setEnabled(false);
+                }
+                catch(InputErronea e)
+                {
 
+                }
             }
         });
     }
@@ -93,7 +112,7 @@ public class MediaIORegistrar extends AppCompatActivity {
     //El fondo se mantiene entre las diferentes pantallas.
     void ponerFondo()
     {
-        LinearLayout fondo = (LinearLayout) findViewById(R.id.ventanaLoginFirst);
+        LinearLayout fondo = (LinearLayout) findViewById(R.id.ventana);
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
         fondo.setBackgroundResource(sharedPref.getInt("idFondo", R.drawable.background1));
     }

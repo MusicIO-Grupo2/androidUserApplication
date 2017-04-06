@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -36,6 +37,7 @@ public class LoginFirstActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     SharedServer sharedServer;
     EditTextEmail email;
+    Button boton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class LoginFirstActivity extends AppCompatActivity {
 
         //Handle del boton para ingresar usando el email.
 
-        Button boton = (Button) findViewById(R.id.enviarEmail);
+        boton = (Button) findViewById(R.id.enviarEmail);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,10 +82,10 @@ public class LoginFirstActivity extends AppCompatActivity {
                     sharedPref.edit().putString("email", texto).commit();
 
                     sharedServer.existeUsuarioEmail(texto, new VerificarEmail());
+                    boton.setEnabled(false);
                 }
                 catch(InputErronea e)
                 {
-
                 }
             }
         });
@@ -184,6 +186,7 @@ public class LoginFirstActivity extends AppCompatActivity {
     {
         public void ejecutar(JSONObject json, long codigoServidor)
         {
+            boton.setEnabled(true);
             if(codigoServidor == 200) {
 
                 try {
