@@ -9,7 +9,7 @@
 
 ## Sinopsis
 
-En el mundo moderno la brecha entre lo privado y lo publico continua disminuyendo. De igual manera lo hace el almacenamiento local y el almacenamiento en la nube que dia tras dia se acercan uno a otro fusionandose. De este concepto nace la idea de MusicIO un reproductor de musica por streaming onDemand que permite escuchar musica donde sea.   
+En el mundo moderno la brecha entre lo privado y lo publico continua disminuyendo. De igual manera lo hace el almacenamiento local y el almacenamiento en la nube que dia tras dia se acercan uno a otro fusionandose. De este concepto nace la idea de Music.IO un reproductor de musica por streaming onDemand que permite escuchar musica donde sea.   
 
 ## Motivacion
 
