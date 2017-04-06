@@ -28,7 +28,7 @@ Luego ir al menu Tools>Android>Enable ADB Integration. Finalmente hacer clic en 
 
 ## Software de terceros
 
-#### La documentacion fue creada automaticamente utilizando el software <a href="www.doxygen.org">Doxygen</a> y esta disponible tanto en LaTeX como en html.
+#### La documentacion fue creada automaticamente utilizando el software <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a> y esta disponible tanto en LaTeX como en html.
 #### El servicio de mockups fue provisto por https://www.mockable.io/
 #### El desarrollo fue hecho enteramente utilizando <a href="https://developer.android.com/studio/index.html?hl=es-419">Android Studio</a>.
 #### Los graficos fueron confeccionados utilizando el software <a href="https://inkscape.org/es/">Inkscape</a>.
