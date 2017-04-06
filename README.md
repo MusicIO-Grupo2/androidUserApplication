@@ -1,4 +1,4 @@
-# MediaIO
+# Music.IO
 
 <br><br><br>
 <p align="center">
