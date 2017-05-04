@@ -77,7 +77,7 @@ public class LoginSecondActivity extends AppCompatActivity {
                     sharedPref.edit().putString("fechaNacimiento",user.getString("birthdate")).commit();
                     sharedPref.edit().putString("pais",user.getString("country")).commit();
                     sharedPref.edit().putString("token", respuesta.getString("token")).commit();
-                    sharedPref.edit().putLong("id",Long.parseLong(user.getString("userID"))).commit();
+                    sharedPref.edit().putLong("id",Long.parseLong(user.getString("UserID"))).commit();
                 }
                 catch (JSONException e)
                 {

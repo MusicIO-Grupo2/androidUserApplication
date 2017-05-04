@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 />
 
-            <com.example.mediaio.mediaio.Formularios.EditTextFecha
+            <com.example.mediaio.mediaio.Formularios.EditTextComun
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/perfilTextoPais"/>

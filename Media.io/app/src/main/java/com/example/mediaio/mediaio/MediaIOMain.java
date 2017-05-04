@@ -71,12 +71,10 @@ public class MediaIOMain extends ActividadPrincipal {
             List<JSONObject> listaJson = new ArrayList<JSONObject>();
             if(codigoServidor == 200) {
                 try {
-
-
-                    Iterator<String> claves = respuesta.keys();
-                    while(claves.hasNext())
+                    JSONArray canciones = respuesta.getJSONArray("canciones");
+                    for(int i=0;i<canciones.length();i++)
                     {
-                        JSONObject elemento = (JSONObject) respuesta.get(claves.next());
+                        JSONObject elemento = (JSONObject) canciones.get(i);
                         listaJson.add(elemento);
                     }
                     lista.setAdapter(new AdapterCanciones(actividad, listaJson));

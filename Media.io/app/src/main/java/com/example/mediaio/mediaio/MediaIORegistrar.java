@@ -93,6 +93,7 @@ public class MediaIORegistrar extends AppCompatActivity {
 
             @Override
             public void ejecutar(JSONObject respuesta, long codigoServidor) {
+                Log.e("Mensaje",respuesta+" : " + codigoServidor);
                 if (codigoServidor == 200) {
                     try {
                         sharedPref.edit().putString("email", email.obtenerTexto());
