@@ -6,9 +6,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -61,18 +62,22 @@ public class LoginSecondActivity extends AppCompatActivity {
     {
         @Override
         public void ejecutar(JSONObject respuesta, long codigoServidor) {
+            Log.e("Mensaje",codigoServidor + ":" + respuesta.toString());
             if(codigoServidor==200)
             {
                 try {
                     JSONObject user = respuesta.getJSONObject("user");
 
                     //Al ser Server Mandatory se guardan los datos que envio el Server como validos.
-                    sharedPref.edit().putString("nombre",user.getString("Name")).commit();
-                    sharedPref.edit().putString("apellido",user.getString("LastName")).commit();
-                    sharedPref.edit().putString("email",user.getString("Email")).commit();
-                    sharedPref.edit().putString("fechaNacimiento",user.getString("FechaNacimiento")).commit();
+                    sharedPref.edit().putString("avatar",user.getString("image")).commit();
+                    sharedPref.edit().putString("nombreUsuario",user.getString("userName")).commit();
+                    sharedPref.edit().putString("nombre",user.getString("firstName")).commit();
+                    sharedPref.edit().putString("apellido",user.getString("lastName")).commit();
+                    sharedPref.edit().putString("email",user.getString("email")).commit();
+                    sharedPref.edit().putString("fechaNacimiento",user.getString("birthdate")).commit();
+                    sharedPref.edit().putString("pais",user.getString("country")).commit();
                     sharedPref.edit().putString("token", respuesta.getString("token")).commit();
-                    sharedPref.edit().putString("id",user.getString("UserID")).commit();
+                    sharedPref.edit().putLong("id",Long.parseLong(user.getString("userID"))).commit();
                 }
                 catch (JSONException e)
                 {

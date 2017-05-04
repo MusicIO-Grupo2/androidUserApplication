@@ -47,7 +47,7 @@ public class EditTextFecha extends android.support.v7.widget.AppCompatEditText {
     {
         boolean valido = true;
         boolean vacio = getText().toString().isEmpty();
-        boolean matchea = getText().toString().matches("^[0-9]+(-[0-9]{2})$");
+        boolean matchea = getText().toString().matches("^[0-9]{1,2}/[0-9]{1,2}/[0-9]{2,4}$");
 
         if(requerido)
             if(vacio)

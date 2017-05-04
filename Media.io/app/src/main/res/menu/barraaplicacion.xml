@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/menuPlaylist"
+        android:title="@string/menuPlaylist"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menuAmigos"
+        android:title="@string/menuAmigos"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menuChat"
+        android:title="@string/menuChat"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menuPerfil"
+        android:title="@string/menuPerfil"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/menuLogout"
+        android:title="@string/menuLogout"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/icono"
+        app:showAsAction="always"
+        android:icon="@drawable/logo"
+        android:title="@string/menuIcono" />
+
+</menu>

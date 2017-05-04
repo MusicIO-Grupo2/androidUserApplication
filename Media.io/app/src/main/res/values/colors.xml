@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="mainTextColor">#82ff82</color>
-    <color name="colorBarraMenues">#8036c6fa</color>
+    <color name="colorBarraMenues">#e1bb8c</color>
+    <color name="colorTextoRegistro">#000000</color>
 </resources>

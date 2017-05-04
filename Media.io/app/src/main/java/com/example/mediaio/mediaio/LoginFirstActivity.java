@@ -3,9 +3,16 @@ package com.example.mediaio.mediaio;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Base64InputStream;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -28,6 +35,15 @@ import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Array;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import static android.util.Base64.DEFAULT;
 
 
 public class LoginFirstActivity extends AppCompatActivity {
@@ -123,23 +139,24 @@ public class LoginFirstActivity extends AppCompatActivity {
                                     String email = object.getString("email");
                                     String nombre = object.getString("first_name");
                                     String apellido = object.getString("last_name");
+                                    String direccionImagen = object.getJSONObject("picture").getJSONObject("data").getString("url");
 
                                     //La almacena.
                                     sharedPref.edit().putString("email", email).commit();
                                     sharedPref.edit().putString("nombre", nombre).commit();
                                     sharedPref.edit().putString("apellido", apellido).commit();
+                                    sharedPref.edit().putString("avatar", obtenerImagenEnBase64(direccionImagen)).commit();
 
                                     sharedServer.existeUsuarioEmail(email, new VerificarEmail());
 
                                 } catch (org.json.JSONException e) {
-                                    //Si hubo un fallo no tiene sentido seguir.
                                 }
                             }
                         });
 
                 //A la API de Facebook hay que pedirle explicitamente la informacion que debe devolover la GraphRequest
                 Bundle parametros = new Bundle();
-                parametros.putString("fields", "id, first_name, last_name, email, age_range");
+                parametros.putString("fields", "id, first_name, last_name, email, age_range, picture");
                 request.setParameters(parametros);
 
                 //Se ejecuta de forma sincronica.
@@ -154,6 +171,29 @@ public class LoginFirstActivity extends AppCompatActivity {
             public void onError(FacebookException error) {
             }
         });
+    }
+
+    String obtenerImagenEnBase64(String direccion)
+    {
+        String imagenBase64 = new String();
+        try {
+            URL url = new URL(direccion);
+
+            Bitmap imagen = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            imagen.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+            byte[] byteArray = byteArrayOutputStream .toByteArray();
+            imagenBase64 = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        }
+        catch(MalformedURLException e)
+        {
+        }
+        catch(IOException e)
+        {
+        }
+
+        return imagenBase64;
     }
 
     void ponerFondo()
@@ -188,24 +228,6 @@ public class LoginFirstActivity extends AppCompatActivity {
         {
             boton.setEnabled(true);
             if(codigoServidor == 200) {
-
-                try {
-
-                    //El email esta registrado, se levantan los datos.
-
-                    SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
-                    sharedPref.edit().putString("email", json.getString("Email"));
-                    sharedPref.edit().putString("nombre", json.getString("Name"));
-                    sharedPref.edit().putString("apellido", json.getString("LastName"));
-                    sharedPref.edit().putString("fechaNacimiento", json.getString("FechaNacimiento"));
-
-                    sharedPref.edit().commit();
-                }
-                catch(JSONException e)
-                {
-
-                }
-
                 irALoginSecond();
             }
             else if(codigoServidor == 401) {

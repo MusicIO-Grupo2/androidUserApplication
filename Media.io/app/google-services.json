@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "939478138744",
+    "firebase_url": "https://musicio-9a709.firebaseio.com",
+    "project_id": "musicio-9a709",
+    "storage_bucket": "musicio-9a709.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939478138744:android:08a9a054d5b45347",
+        "android_client_info": {
+          "package_name": "com.example.mediaio.mediaio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939478138744-r1dt5cmnmfi82nc4pv9olps3jt5jg8vf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAN-_rY5e5s3vUMq86mN1YpWuadtZydQJ0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

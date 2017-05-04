@@ -1,19 +1,33 @@
 <resources>
-    <string name="app_name">Music.io</string>
+    <string name="app_name">Music.IO</string>
     <string name="facebook_app_id">242918692846456</string>
     <string name="title_activity_media_iomain">MediaIOMain</string>
     <string name="datos">com.example.mediaio.mediaio</string>
     <string name="textoLoginEmail">Ingrese su email para comenzar</string>
     <string name="botonEnviarEmailLogin">></string>
 
+    <string name="registroTextoRegistro">¡Contanos sobre vos! De esta forma pasaras a formar parte de Music.IO y generaremos tu experiencia perfecta.</string>
+    <string name="registroTextoNombreUsuario">Nombre de usuario:</string>
     <string name="registroTextoNombre">Nombre:</string>
     <string name="registroTextoApellido">Apellido:</string>
     <string name="registroTextoEmail">Email</string>
     <string name="registroTextoFechaNacimiento">Fecha de Nacimiento:</string>
+    <string name="registroTextoPais">Pais:</string>
     <string name="registroTextoContrasena">Contraseña:</string>
     <string name="registroTextoBotonRegistrar">Registrarse</string>
     <string name="botonLogin">Ingresar</string>
     <string name="textoLoginContrasena">Ingrese su contraseña para finalizar el login.</string>
     <string name="loginContrasenaInvalida">Contraseña invalida. Intente nuevamente.</string>
     <string name="botonLogout">Logout</string>
+
+    <string name="menuLogout">Logout</string>
+    <string name="menuPerfil">Perfil</string>
+    <string name="menuIcono">Music.IO</string>
+    <string name="menuAmigos">Amigos</string>
+    <string name="menuPlaylist">Playlist</string>
+    <string name="menuChat">Chat</string>
+
+
+    <string name="perfilTextoBotonGuardarCambios">Actualizar Perfil</string>
+    <string name="perfilTextoModificacion">Datos de tu perfil</string>
 </resources>

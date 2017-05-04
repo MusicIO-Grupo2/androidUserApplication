@@ -9,22 +9,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:background="@color/colorBarraMenues"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:src="@drawable/logo"
-            android:layout_gravity="center">
-        </ImageView>
-
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"

@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Setea un fondo aleatorio para la pantalla principal.
 
         RelativeLayout fondo = (RelativeLayout) findViewById(R.id.ventana);
