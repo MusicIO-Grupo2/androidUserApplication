@@ -43,6 +43,17 @@ public class MediaIOMain extends ActividadPrincipal {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.BarraMenu);
         setSupportActionBar(myToolbar);
 
+        //Inicializa el reproductor
+
+        inicializarReproductor();
+        habilitarLoop();
+
+        ArrayList<String> playlist = new ArrayList<String>();
+        playlist.add("http://www.certifiedpowercoach.com/1.mp3");
+        playlist.add("http://www.certifiedpowercoach.com/2.mp3");
+        playlist.add("http://www.certifiedpowercoach.com/3.mp3");
+        reproducirPlaylist(playlist);
+
         ListView lista = (ListView) findViewById(R.id.ListaCanciones);
         MostrarCanciones canciones = new MostrarCanciones(lista, this);
 

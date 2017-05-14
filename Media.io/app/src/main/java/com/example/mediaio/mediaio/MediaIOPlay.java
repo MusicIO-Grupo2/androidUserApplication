@@ -18,37 +18,8 @@ public class MediaIOPlay extends ActividadPrincipal {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_ioplay);
-        mostrandoImagenPlay = false;
 
-        //Inicializa la toolbar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.BarraMenu);
-        setSupportActionBar(myToolbar);
+        inicializarReproductor();
 
-        String URLTema = /*getIntent().getExtras().getString("URLTema")*/"http://www.certifiedpowercoach.com/1.mp3";
-        MediaPlayer mediaPlayer = new MediaPlayer();
-
-        reproductor = new Reproductor(mediaPlayer, URLTema);
-        reproductor.execute();
-
-        final ImageView play = (ImageView) findViewById(R.id.BotonReproducir);
-
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mostrandoImagenPlay)
-                {
-                    play.setImageResource(R.drawable.boton_reproductor_play);
-                    mostrandoImagenPlay = false;
-                    reproductor.pausar();
-                }
-                else
-                {
-                    play.setImageResource(R.drawable.noton_reproductor_pausa);
-                    mostrandoImagenPlay = true;
-                    reproductor.reproducir();
-                }
-
-            }
-        });
     }
 }

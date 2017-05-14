@@ -15,42 +15,12 @@
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
-    <ImageView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:id="@+id/ImagenReproductor"/>
-
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/LugarReproductor"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/boton_reproductor_previous"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:id="@+id/BotonAnterior"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/noton_reproductor_pausa"
-            android:id="@+id/BotonReproducir"
-            android:layout_centerHorizontal="true"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/boton_reproductor_next"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:id="@+id/BotonSiguiente" />
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

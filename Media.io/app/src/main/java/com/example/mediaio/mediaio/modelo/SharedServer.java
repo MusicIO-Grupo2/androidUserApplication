@@ -45,7 +45,7 @@ public class SharedServer extends InterfazRest{
         {
 
         }
-        enviarPOST(URLAPIREST+"token",json,callback);
+        enviarPOST(URLAPIREST+"token/",json,callback);
     }
 
     public void darAltaUsuario(String nombre, String apellido, String email, String fechaNacimiento, String contrasena, String pais, String imagen, String nombreUsuario, JSONCallback callback)
@@ -58,7 +58,7 @@ public class SharedServer extends InterfazRest{
                 json.put("firstName", nombre);
                 json.put("lastName", apellido);
                 json.put("country", pais);
-                json.put("email", email);
+                json.put("Email", email);
                 json.put("birthdate", fechaNacimiento);
                 json.put("images",imagen);
         }
