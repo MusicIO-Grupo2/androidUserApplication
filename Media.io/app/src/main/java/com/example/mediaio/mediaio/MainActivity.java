@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
     void irAMain()
     {
-        Intent intent = new Intent(this, MediaIOMain.class);
+        Intent intent = new Intent(this, MediaIOBusqueda.class);
         startActivity(intent);
     }
     void irALogin()

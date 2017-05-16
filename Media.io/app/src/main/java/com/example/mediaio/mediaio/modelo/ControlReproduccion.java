@@ -44,22 +44,18 @@ public class ControlReproduccion {
         next = (ImageView) reproductor.findViewById(R.id.BotonCancionSiguiente);
         pos = (LinearLayout) reproductor.findViewById(R.id.BarraPosicionCancion);
 
-        if(control.isPlaying())
-            play.setImageResource(R.drawable.boton_reproductor_stop);
-
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!control.isPlaying()) {
                     control.start();
 
-                    if(control.isPlaying())
-                        play.setImageResource(R.drawable.boton_reproductor_stop);
+                    ponerImagenReproduciendo();
                 }
                 else
                 {
                     control.pause();
-                    play.setImageResource(R.drawable.boton_reproductor_play);
+                    ponerImagenPausa();
                 }
 
             }
@@ -69,9 +65,6 @@ public class ControlReproduccion {
             @Override
             public void onClick(View v) {
                 control.prev();
-
-                if(control.isPlaying())
-                    play.setImageResource(R.drawable.boton_reproductor_stop);
             }
         });
 
@@ -79,14 +72,21 @@ public class ControlReproduccion {
             @Override
             public void onClick(View v) {
                 control.next();
-
-                if(control.isPlaying())
-                    play.setImageResource(R.drawable.boton_reproductor_stop);
             }
         });
 
         anchorView.addView(reproductor);
 
+    }
+
+    public void ponerImagenReproduciendo()
+    {
+        play.setImageResource(R.drawable.boton_reproductor_stop);
+    }
+
+    public void ponerImagenPausa()
+    {
+        play.setImageResource(R.drawable.boton_reproductor_play);
     }
 
     public void show() {

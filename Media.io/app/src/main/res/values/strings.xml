@@ -30,4 +30,11 @@
 
     <string name="perfilTextoBotonGuardarCambios">Actualizar Perfil</string>
     <string name="perfilTextoModificacion">Datos de tu perfil</string>
+
+    <string name="TituloListaCanciones">Canciones</string>
+    <string name="TituloListaAlbumes">Albumes</string>
+    <string name="TituloListaUsuarios">Usuarios</string>
+    <string name="BotonBuscar">Buscar</string>
+    <string name="TituloListaPlaylist">Playlists</string>
+    <string name="TituloListaArtistas">Artistas</string>
 </resources>

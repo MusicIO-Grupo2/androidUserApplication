@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.telecom.Call;
 import android.util.Log;
 
 import java.io.IOException;
@@ -24,7 +25,8 @@ public class Reproductor extends Service implements MediaPlayer.OnCompletionList
     private int cancion;
     private Boolean inicializado;
     private final IBinder mBinder = new BinderReproductor();
-    private Callback callback;
+    private Callback play;
+    private Callback pausa;
 
     public class BinderReproductor extends Binder {
         public Reproductor getService() {
@@ -36,17 +38,25 @@ public class Reproductor extends Service implements MediaPlayer.OnCompletionList
     {
     }
 
+    public void configurarCallbacks(Callback play, Callback pausa)
+    {
+        this.play = play;
+        this.pausa = pausa;
+    }
+
 
     public void inicializar(ArrayList<String> playlist)
     {
-            this.callback = callback;
+        if(!inicializado)
             mediaPlayer = new MediaPlayer();
+
             termino = false;
             inicializado = true;
             this.playlist = playlist;
             cancion = 0;
             mediaPlayer.setOnCompletionListener(this);
             configurarCancion();
+            play();
     }
 
     public void inicializar()
@@ -82,6 +92,7 @@ public class Reproductor extends Service implements MediaPlayer.OnCompletionList
         if(mediaPlayer != null && playlist.size() > 0)
         {
             mediaPlayer.start();
+            this.play.ejecutar();
         }
     }
 
@@ -121,6 +132,7 @@ public class Reproductor extends Service implements MediaPlayer.OnCompletionList
 
     public void pausar(){
         if(mediaPlayer != null) {
+            pausa.ejecutar();
             mediaPlayer.pause();
         }
     }

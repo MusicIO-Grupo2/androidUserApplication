@@ -8,16 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.mediaio.mediaio.MainActivity;
+import com.example.mediaio.mediaio.MediaIOListPlaylist;
 import com.example.mediaio.mediaio.MediaIOPerfil;
-import com.example.mediaio.mediaio.MediaIOPlay;
 import com.example.mediaio.mediaio.R;
 import com.example.mediaio.mediaio.modelo.Callback;
 import com.example.mediaio.mediaio.modelo.ControlReproduccion;
@@ -46,6 +44,18 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
             Reproductor.BinderReproductor binder = (Reproductor.BinderReproductor) service;
             reproductor = binder.getService();
 
+            reproductor.configurarCallbacks(new Callback() {
+                                                @Override
+                                                public void ejecutar() {
+                                                    controles.ponerImagenReproduciendo();
+                                                }
+                                            }, new Callback() {
+                                                @Override
+                                                public void ejecutar() {
+                                                    controles.ponerImagenPausa();
+                                                }
+                                            });
+
             conectadoAServicio = true;
 
             for(int i=0;i<tareasPendientes.size();i++)
@@ -72,7 +82,7 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
     private void inicializarReproductorPrivado()
     {
         controles = new ControlReproduccion((LinearLayout) findViewById(R.id.LugarReproductor), true, this);
-    }
+}
 
 
     public void inicializarReproductor()
@@ -120,8 +130,9 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
 
     public void reproducirPlaylist(final ArrayList<String> playlist) {
 
-        if(conectadoAServicio)
+        if(conectadoAServicio) {
             reproductor.inicializar(playlist);
+        }
         else {
             tareasPendientes.add(new Callback() {
                 @Override
@@ -179,7 +190,7 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
 
     void irAPlayList()
     {
-        Intent intent = new Intent(this, MediaIOPlay.class);
+        Intent intent = new Intent(this, MediaIOListPlaylist.class);
         startActivity(intent);
     }
 

@@ -12,10 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <service
             android:name=".modelo.Reproductor"
-            android:exported="false"/>
+            android:exported="false" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -38,12 +37,17 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
         <activity android:name=".MediaIOMain" />
         <activity android:name=".MediaIORegistrar" />
         <activity android:name=".LoginSecondActivity" />
         <activity android:name=".MediaIOPerfil" />
         <activity android:name=".MediaIOChat" />
-        <activity android:name=".MediaIOPlay"></activity>
+        <activity android:name=".MediaIOBusqueda" />
+        <activity android:name=".MediaIOAlbum" />
+        <activity android:name=".MediaIOPlaylist" />
+        <activity android:name=".MediaIOListPlaylist" />
+        <activity android:name=".modelo.MediaIOArtista"></activity>
     </application>
 
 </manifest>

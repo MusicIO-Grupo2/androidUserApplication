@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120px"
@@ -10,33 +9,22 @@
     android:paddingBottom="20px"
     android:layout_marginBottom="5px">
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
         android:layout_alignParentTop="true"
-        android:id="@+id/NombreCancion"
-        android:textStyle="normal|bold"
-        android:textSize="20sp"
-        android:text="Infinity"/>
+        android:id="@+id/FotoPerfil"
+        android:src="@drawable/account"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NombreCancion"
-        android:layout_marginTop="5dp"
-        android:id="@+id/NombreBanda"
-        android:layout_alignParentBottom="true"
-        android:text="Queens of the stone age - "/>
+        android:layout_toRightOf="@+id/FotoPerfil"
+        android:id="@+id/NombreUsuario"
+        android:text="Marcos Pernica"
+        android:layout_centerInParent="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NombreCancion"
-        android:layout_marginTop="5dp"
-        android:id="@+id/NombreAlbum"
-        android:layout_toRightOf="@+id/NombreBanda"
-        android:layout_alignParentBottom="true"
-        android:text="Rated R"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -44,7 +32,7 @@
         android:adjustViewBounds="true"
         android:id="@+id/ReproducirCancion"
         android:layout_alignParentRight="true"
-        android:src="@drawable/botonplay"
+        android:src="@drawable/follow"
         android:layout_centerInParent="true"/>
 
 
