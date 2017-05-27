@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mediaio.mediaio.Actividades.ActividadPrincipal;
+import com.example.mediaio.mediaio.MediaIOArtista;
 import com.example.mediaio.mediaio.R;
 import com.example.mediaio.mediaio.modelo.ProcesarResultado;
 
@@ -17,7 +18,7 @@ import org.json.JSONObject;
  * Created by Marcos on 16/05/2017.
  */
 
-class MostrarResultadoArtistas extends ProcesarResultado {
+public class MostrarResultadoArtistas extends ProcesarResultado {
 
     public MostrarResultadoArtistas(LinearLayout lista, ActividadPrincipal actividad, int idVistaAInflar) {
         super(lista, actividad, idVistaAInflar);
@@ -51,7 +52,7 @@ class MostrarResultadoArtistas extends ProcesarResultado {
     private void irAInformacionArtista(String id)
     {
         Intent intent = new Intent(actividad, MediaIOArtista.class);
-        intent.putExtra("id", id);
+        intent.putExtra("idArtista", id);
         actividad.startActivity(intent);
     }
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.mediaio.mediaio.Actividades.ActividadPrincipal;
 import com.example.mediaio.mediaio.modelo.JSONCallback;
+import com.example.mediaio.mediaio.modelo.LikeCallback;
 import com.example.mediaio.mediaio.modelo.MostrarResultadoCanciones;
 import com.example.mediaio.mediaio.modelo.ProcesarResultado;
 import com.example.mediaio.mediaio.modelo.SharedServer;
@@ -29,6 +30,8 @@ public class MediaIOAlbum extends ActividadPrincipal {
     private TextView artistas;
     private TextView generos;
     private Button escuchar;
+
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,7 @@ public class MediaIOAlbum extends ActividadPrincipal {
         //Crea la interfaz con el Shared Server.
         sharedServer = new SharedServer();
 
-        final SharedPreferences sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
+        sharedPref = getSharedPreferences(getString(R.string.datos), Context.MODE_PRIVATE);
 
         sharedServer.configurarTokenEID(sharedPref.getString("token",""),sharedPref.getLong("id",0));
 
@@ -61,7 +64,7 @@ public class MediaIOAlbum extends ActividadPrincipal {
 
     private void buscarInformacionAlbum(final String id)
     {
-        final ProcesarResultado mostrarCanciones = new MostrarResultadoCanciones(canciones,this, R.layout.vista_cancion);
+        final ProcesarResultado mostrarCanciones = new MostrarResultadoCanciones(canciones,this, R.layout.vista_cancion, sharedServer, Long.toString(sharedPref.getLong("id",0)));
 
         JSONCallback callback = new JSONCallback() {
             @Override

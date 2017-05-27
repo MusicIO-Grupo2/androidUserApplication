@@ -37,4 +37,27 @@
     <string name="BotonBuscar">Buscar</string>
     <string name="TituloListaPlaylist">Playlists</string>
     <string name="TituloListaArtistas">Artistas</string>
+
+    <string name="NuevaPlaylistDialogoTitulo">Crear nueva playlist</string>
+    <string name="NuevaPlaylistDialogoMensaje">¿Que nombre quieres ponerle?</string>
+    <string name="NuevaPlaylistDialogoIngresarNombre">Nombre:</string>
+    <string name="NuevaPlaylistDialogoIngresarDescripcion">Descripcion:</string>
+    <string name="NuevaPlaylistDialogoBotonCrear">Crear</string>
+    <string name="NuevaPlaylistDialogoBotonCancelar">Cancelar</string>
+    <string name="menuPlaylistEliminarPlaylist">Eliminar</string>
+    <string name="PlayListEliminarTitulo">Eliminacion de playlist</string>
+    <string name="PlayListEliminarMensaje">Se borrara la playlist ¿Desea continuar?</string>
+    <string name="PlaylistEliminarContinuar">Continuar</string>
+    <string name="playlistEliminarCancelar">No, no quiero borrarla</string>
+    <string name="menuCancionEliminarCancionPlaylist">Eliminar de la playlist</string>
+    <string name="menuCancionAgregarCancionPlaylist">Agregar a playlist</string>
+    <string name="CancionAgregarAPlaylist">Playlist</string>
+    <string name="CancionAgregarAPlaylistMensaje">Seleccion la playlist destino</string>
+    <string name="CancionCancelarAgregarAPlaylist">Cancelar</string>
+    <string name="TituloListaContactos">Contactos</string>
+    <string name="BotonSeguirUsuario">Seguir</string>
+    <string name="DejarSeguir">Dejar de seguir</string>
+    <string name="SeguirUsuario">Seguir</string>
+    <string name="TituloListaContactosUsuario">Tus contactos</string>
+    <string name="menuContactoDejarDeSeguirt">Dejar de seguir</string>
 </resources>

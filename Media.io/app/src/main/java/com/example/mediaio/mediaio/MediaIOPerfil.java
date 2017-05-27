@@ -97,7 +97,7 @@ public class MediaIOPerfil extends ActividadPrincipal {
 
             @Override
             public void ejecutar(JSONObject respuesta, long codigoServidor) {
-                Log.e("Mensaje",respuesta.toString()+" " + Long.toString(codigoServidor));
+                Log.e("m",respuesta.toString()+" " + Long.toString(codigoServidor));
                 if(codigoServidor == 200)
                 {
                     try {

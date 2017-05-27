@@ -62,7 +62,6 @@ public class LoginSecondActivity extends AppCompatActivity {
     {
         @Override
         public void ejecutar(JSONObject respuesta, long codigoServidor) {
-            Log.e("Mensaje",codigoServidor + ":" + respuesta.toString());
             if(codigoServidor==200)
             {
                 try {
@@ -77,7 +76,7 @@ public class LoginSecondActivity extends AppCompatActivity {
                     sharedPref.edit().putString("fechaNacimiento",user.getString("birthdate")).commit();
                     sharedPref.edit().putString("pais",user.getString("country")).commit();
                     sharedPref.edit().putString("token", respuesta.getString("token")).commit();
-                    sharedPref.edit().putLong("id",Long.parseLong(user.getString("UserID"))).commit();
+                    sharedPref.edit().putLong("id",Long.parseLong(user.getString("userId"))).commit();
                 }
                 catch (JSONException e)
                 {
@@ -104,7 +103,7 @@ public class LoginSecondActivity extends AppCompatActivity {
 
     void irAMain()
     {
-        Intent intent = new Intent(this, MediaIOMain.class);
+        Intent intent = new Intent(this, MediaIOBusqueda.class);
         startActivity(intent);
     }
 

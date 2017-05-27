@@ -92,33 +92,34 @@
                 android:orientation="vertical">
             </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        style="@style/mainText"
-        android:text="..."
-        android:id="@+id/BotonMasArtistas"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                style="@style/mainText"
+                android:text="..."
+                android:id="@+id/BotonMasArtistas"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TituloListaUsuarios"
-        android:text="@string/TituloListaUsuarios"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TituloListaUsuarios"
+                android:text="@string/TituloListaUsuarios"/>
 
-    <ListView
-        android:id="@+id/ListaUsuarios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </ListView>
+            <LinearLayout
+                android:id="@+id/ListaUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        style="@style/mainText"
-        android:text="..."
-        android:id="@+id/BotonMasUsuarios"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            style="@style/mainText"
+            android:text="..."
+            android:id="@+id/BotonMasUsuarios"/>
 
         </LinearLayout>
 

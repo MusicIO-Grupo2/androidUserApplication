@@ -2,7 +2,6 @@ package com.example.mediaio.mediaio;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.mediaio.mediaio.Actividades.ActividadPrincipal;
 import com.example.mediaio.mediaio.modelo.JSONCallback;
-import com.example.mediaio.mediaio.modelo.MostrarResultadoCanciones;
+import com.example.mediaio.mediaio.modelo.MostrarResultadoCancionesPlaylist;
 import com.example.mediaio.mediaio.modelo.ProcesarResultado;
 import com.example.mediaio.mediaio.modelo.SharedServer;
 
@@ -59,7 +58,7 @@ public class MediaIOPlaylist extends ActividadPrincipal {
 
     private void buscarInformacionPlaylist(final String id)
     {
-        final ProcesarResultado mostrarPlaylist = new MostrarResultadoCanciones(canciones,this, R.layout.vista_cancion);
+        final ProcesarResultado mostrarPlaylist = new MostrarResultadoCancionesPlaylist(canciones,this, R.layout.vista_cancion, sharedServer, id);
 
         JSONCallback callback = new JSONCallback() {
             @Override
@@ -93,6 +92,6 @@ public class MediaIOPlaylist extends ActividadPrincipal {
             }
         };
 
-        sharedServer.buscarInformacionAlbum(callback, id);
+        sharedServer.buscarInformacionPlaylist(callback, id);
     }
 }

@@ -23,6 +23,4 @@ public class MensajeFirebase {
         // Initialize to current time
        timestamp= new Date().getTime();
     }
-
-
 }

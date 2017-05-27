@@ -25,36 +25,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:id="@+id/FotoArtista"
-                android:src="@drawable/tapaalbum"
-                android:padding="50px"
-                />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/NombreArtista"
-                android:text="Demon Cleaner 12/12/1994"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/GeneroArtista"
-                android:text="Stoner Rock"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/TituloListaAlbumes"
-                android:text="@string/TituloListaAlbumes"/>
+                android:id="@+id/Contactos"
+                android:text="@string/TituloListaContactosUsuario"/>
 
             <LinearLayout
-                android:id="@+id/ListaAlbumes"
+                android:id="@+id/ListaContactos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

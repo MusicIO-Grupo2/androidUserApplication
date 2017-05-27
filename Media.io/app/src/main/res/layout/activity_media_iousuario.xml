@@ -29,32 +29,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:id="@+id/FotoArtista"
-                android:src="@drawable/tapaalbum"
+                android:id="@+id/FotoPerfil"
+                android:src="@drawable/account"
                 android:padding="50px"
                 />
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/NombreArtista"
-                android:text="Demon Cleaner 12/12/1994"/>
+                android:id="@+id/BotonSeguirUsuario"
+                android:text="@string/BotonSeguirUsuario"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/GeneroArtista"
-                android:text="Stoner Rock"/>
+                android:id="@+id/NombreUsuario"
+                android:text="marcosP"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Nombre"
+                android:text="Marcos"/>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/TituloListaAlbumes"
-                android:text="@string/TituloListaAlbumes"/>
+                android:id="@+id/Apellido"
+                android:text="Pernica"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Pais"
+                android:text="Argentina"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Email"
+                android:text="MarcosPernica@gmail.com"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/FechaDeNacimiento"
+                android:text="12/12/1223"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Contactos"
+                android:text="@string/TituloListaContactos"/>
 
             <LinearLayout
-                android:id="@+id/ListaAlbumes"
+                android:id="@+id/ListaContactos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

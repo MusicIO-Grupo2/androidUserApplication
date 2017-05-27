@@ -14,8 +14,11 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 
 import com.example.mediaio.mediaio.MainActivity;
+import com.example.mediaio.mediaio.MediaIOChat;
+import com.example.mediaio.mediaio.MediaIOContactos;
 import com.example.mediaio.mediaio.MediaIOListPlaylist;
 import com.example.mediaio.mediaio.MediaIOPerfil;
+import com.example.mediaio.mediaio.MediaIOSalasChat;
 import com.example.mediaio.mediaio.R;
 import com.example.mediaio.mediaio.modelo.Callback;
 import com.example.mediaio.mediaio.modelo.ControlReproduccion;
@@ -170,6 +173,12 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
             case R.id.menuPlaylist:
                 irAPlayList();
                 return true;
+            case R.id.menuAmigos:
+                irAContactos();
+                return true;
+            case R.id.menuChat:
+                irAChat();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -191,6 +200,18 @@ public class ActividadPrincipal extends AppCompatActivity implements IControlesR
     void irAPlayList()
     {
         Intent intent = new Intent(this, MediaIOListPlaylist.class);
+        startActivity(intent);
+    }
+
+    void irAContactos()
+    {
+        Intent intent = new Intent(this, MediaIOContactos.class);
+        startActivity(intent);
+    }
+
+    void irAChat()
+    {
+        Intent intent = new Intent(this, MediaIOSalasChat.class);
         startActivity(intent);
     }
 

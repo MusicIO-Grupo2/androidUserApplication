@@ -37,11 +37,9 @@ public class MainActivity extends AppCompatActivity {
         fondo.setBackgroundResource(idFondo);
         fondos.recycle();
 
-        irAMain();
-
         //Lanza un timer que al terminar pasa a la pantalla de login o la principal si esta logeado.
 
-        /*TimerTask tareaTimer = new TimerTask() {
+        TimerTask tareaTimer = new TimerTask() {
             @Override
             public void run() {
 
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         };
         Timer timer = new Timer();
 
-        timer.schedule(tareaTimer, MILISEGUNDOSSPLASH);*/
+        timer.schedule(tareaTimer, MILISEGUNDOSSPLASH);
     }
     void irAMain()
     {

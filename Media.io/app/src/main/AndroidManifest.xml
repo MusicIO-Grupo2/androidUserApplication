@@ -47,7 +47,10 @@
         <activity android:name=".MediaIOAlbum" />
         <activity android:name=".MediaIOPlaylist" />
         <activity android:name=".MediaIOListPlaylist" />
-        <activity android:name=".modelo.MediaIOArtista"></activity>
+        <activity android:name=".MediaIOArtista" />
+        <activity android:name=".MediaIOUsuario" />
+        <activity android:name=".MediaIOContactos" />
+        <activity android:name=".MediaIOSalasChat"></activity>
     </application>
 
 </manifest>

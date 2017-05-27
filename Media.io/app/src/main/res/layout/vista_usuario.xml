@@ -9,6 +9,11 @@
     android:paddingBottom="20px"
     android:layout_marginBottom="5px">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/VerInformacionUsuario">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -25,12 +30,14 @@
         android:text="Marcos Pernica"
         android:layout_centerInParent="true"/>
 
+        </RelativeLayout>
+
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="50px"
         android:adjustViewBounds="true"
-        android:id="@+id/ReproducirCancion"
+        android:id="@+id/SeguirUsuario"
         android:layout_alignParentRight="true"
         android:src="@drawable/follow"
         android:layout_centerInParent="true"/>
